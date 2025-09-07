@@ -1,0 +1,94 @@
+body{
+    background-color: rgb(255, 251, 243);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('C:\computer files\Mona Waazeer\DSE243F-Coursework-MoodNote-main\Moodnote\img\whiteDots.png');
+}
+
+.container.flow {
+    margin: auto; 
+    padding: 2%;
+    text-align: center;
+    width: 50%;
+    height: 30%;
+    background-image: url('C:\computer files\Mona Waazeer\DSE243F-Coursework-MoodNote-main\Moodnote\img\whiteDots.png');
+    border-radius: 20px;
+}
+
+#title {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 217, 217, 0.411));
+    font-size: x-large;
+    position: sticky;
+}
+
+.card {
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border: none;
+    overflow: hidden;
+}
+
+
+.card-body {
+    padding: 2rem;
+}
+
+
+label {
+    font-weight: 600;
+    margin-top: 10px;
+    color: #333;
+}
+
+
+.form-control {
+    border-radius: 12px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+    margin: auto; 
+    padding: 2%;
+}
+
+.form-control:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 8px rgba(79, 172, 254, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+    width: 100%;
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.btn-warning {
+    margin-top: 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 10px;
+    width: 100%;
+}
+
+
+p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #444;
+}
