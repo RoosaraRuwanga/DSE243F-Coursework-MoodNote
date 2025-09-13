@@ -1,94 +1,137 @@
-body{
-    background-color: rgb(255, 251, 243);
+body {
+    background: linear-gradient(to bottom, #fffdf8, #ffe9e9);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
-    display: flex;
     margin: 0;
+    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    background-image: url('C:\computer files\Mona Waazeer\DSE243F-Coursework-MoodNote-main\Moodnote\img\whiteDots.png');
-}
-
-.container.flow {
-    margin: auto; 
-    padding: 2%;
+    align-items: center;
     text-align: center;
-    width: 50%;
-    height: 30%;
-    background-image: url('C:\computer files\Mona Waazeer\DSE243F-Coursework-MoodNote-main\Moodnote\img\whiteDots.png');
-    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-#title {
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 217, 217, 0.411));
-    font-size: x-large;
-    position: sticky;
+body.fade-in {
+    opacity: 1;
+}
+
+.title-container {
+    margin-bottom: 15px;
+}
+
+.title-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    color: #222;
+}
+
+.title-container p {
+    font-size: 18px;
+    color: #444;
+    margin: 5px 0 0;
+}
+
+.intro-text {
+    max-width: 600px;
+    font-size: 16px;
+    color: #555;
+    margin: 15px auto 30px;
+    line-height: 1.5;
 }
 
 .card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     border: none;
     overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+
 }
 
+.card:hover {
+    transform: translateY(-5px);
+}
 
 .card-body {
     padding: 2rem;
 }
 
-
 label {
     font-weight: 600;
     margin-top: 10px;
     color: #333;
+    text-align: left;
+    display: block;
 }
-
 
 .form-control {
     border-radius: 12px;
-    padding: 10px 15px;
+    padding: 12px 15px;
     border: 1px solid #ccc;
     transition: all 0.3s ease;
-    margin: auto; 
-    padding: 2%;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .form-control:focus {
-    border-color: #4facfe;
-    box-shadow: 0 0 8px rgba(79, 172, 254, 0.4);
-    justify-content: center;
-    align-items: center;
+    border-color: #f7b500;
+    /* yellow accent */
+    box-shadow: 0 0 0 0.2rem rgba(247, 181, 0, 0.25);
+    outline: none;
 }
 
 .btn-primary {
     width: 100%;
     border-radius: 12px;
-    padding: 10px;
+    padding: 12px;
     font-weight: 600;
+    font-size: 16px;
     background: linear-gradient(135deg, #4facfe, #00f2fe);
     border: none;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
 }
 
 .btn-warning {
-    margin-top: 10px;
+    margin-top: 12px;
     border-radius: 12px;
     font-weight: 600;
-    padding: 10px;
+    padding: 12px;
     width: 100%;
+    font-size: 16px;
+    background: #ffb300;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.btn-warning:hover {
+    background: #e6a000;
+    transform: translateY(-2px);
+}
 
 p {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 15px;
     font-size: 0.95rem;
-    color: #444;
+    color: #555;
+}
+
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-in {
+    opacity: 1;
 }

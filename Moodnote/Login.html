@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Moodnote</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="Login.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box Login">
+            <form action="">
+                <center><h1>Login</h1></center>
+                <div class="input-box">
+                    <i class='bx bx-user'></i>
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-lock'></i>
+                    <input type="password" placeholder="Password" required>
+                </div>
+
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox"> Remember Me
+                    </label>
+                    <br>
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+
+                <br></br>
+
+                <p>Don't have an account?<br>
+                    <button type="button" class="btn btn-warning"
+                        onclick="smoothRedirect('Login.html')">Register</button>
+                </p>
+
+                <!-- Connect register.html to the register button -->
+                <script>
+                    document.querySelector('.btn-warning').addEventListener('click', function () 
+                    {
+                        window.location.href = 'register.html';
+                    });
+                </script>
+            </form>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // Fade-in effect
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.add("fade-in");
+        });
+
+        // Smooth transition before leaving
+        function smoothRedirect(url) {
+            document.body.style.opacity = "0";
+            setTimeout(function () {
+                window.location.href = url;
+            }, 500);
+        }
+
+        // Login button action
+        document.querySelector('.btn-primary').addEventListener('click', function () {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (username === 'user' && password === 'pass') {
+                alert('Login successful!');
+                // Redirect to another page
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        });
+    </script>
+</body>
+
+</html>
