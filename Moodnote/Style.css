@@ -50,7 +50,9 @@ body{
 }
 
 
-.container .btn {
+.container .btn { /* Thanks Stackoverflow, my saviour to making this project look much less boring - Roosara*/
+    text-shadow: 2px 0 #00000023, -2px 0 #00000023, 0 2px #00000023, 0 -2px #00000023,
+            1px 1px #00000023, -1px -1px #00000023, 1px -1px #00000023, -1px 1px #00000023;
     width: 24%;
     height: 80%;
     border: none;
@@ -71,6 +73,8 @@ body{
 
 .container .btn:hover {
     opacity: 0.6;
+    text-shadow: 2px 0 #ffffff, -2px 0 #ffffff, 0 2px #ffffff, 0 -2px #ffffff,
+            1px 1px #ffffff, -1px -1px #ffffff, 1px -1px #ffffff, -1px 1px #ffffff;
 }
 
 
