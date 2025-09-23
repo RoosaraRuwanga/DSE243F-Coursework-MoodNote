@@ -14,9 +14,9 @@ body{
     margin: 1%;
     margin-left: 15%;
     padding: 1%;
-    background: #fff;
+    background: linear-gradient(#fff, #fff1db);
     border-radius: 10px;
-    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.6);
     text-align: center;
 }
 
@@ -56,13 +56,17 @@ body{
     border: none;
     outline: none;
     border-radius: 5px;
-    background: linear-gradient(to right, #ff5100, #ff9900);
+    background: linear-gradient(#ff5100, #ff9900);
     color: #fff;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     margin-top: 12px;
     transition: 0.3s;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, .4) 0 3px 0 0 inset;
+    box-sizing: border-box;
 }
 
 .container .btn:hover {
