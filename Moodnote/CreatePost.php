@@ -1,5 +1,22 @@
-<!DOCTYPE html>
+<?php
+include ("db/config.php"); // Database connection file
+//continue the session assuming one was started at login
+session_start();
 
+//get the account of the logged-in user
+$username=$_SESSION['username'];
+
+//query to extract data from the 2nd table
+$stPosts= $conn->prepare("SELECT post_content, post_emotion, post_id, post_title FROM posts WHERE username=?");
+$stPosts->bind_param("s", $username);
+$stPosts->execute();
+
+function getPostInformation($postID) {
+  echo $postID;
+}
+
+?>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,25 +43,28 @@
 <body>
     <div class="container">
          <div class="form-group">
-            <form action="">
+            <form action="" method="post">
                 <br>
                 <center><h1>Create an entry</h1></center><br>
                 <div class="form-group">
-                    <input type="text" id="postTitle" placeholder="Title of entry..."><br><br>
-                    <textarea class="form-control" id="postContent" placeholder="How are you feeling right now?" rows="3"></textarea>
+                    <input type="text" name="postTitle" placeholder="Title of entry..." required><br><br>
+                    <textarea class="form-control" name="postContent" placeholder="How are you feeling right now?" rows="3" required></textarea>
                 </div> <br>
                 <div class="form-group">
                     <label>What emotion suits this entry best?</label>
-                    <select name="emotion" id="emotion" style="width: 40%;">
+
+                    <select name="postEmotion" style="width: 40%;">
                         <option value="happy">Happy</option>
                         <option value="sad">Sad</option>
                         <option value="angry">Angry</option>
                         <option value="neutral">Neutral</option>
                     </select>
+
                 </div>
+                <br>
                 <button type="submit" class="btn">Create Post</button>
-                <button id="back" class="btn">Go Back</button>
             </form>
+            <button id="back" class="btn" onclick="location.href='ViewEntries.php'">Go Back</button>
     </div>
 </body>
 </html>

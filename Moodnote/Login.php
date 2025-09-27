@@ -1,3 +1,52 @@
+<?php
+include ("db/config.php"); // Database connection file
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Check
+    $stmt = $conn->prepare("SELECT password FROM account WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($db_password);
+        $stmt->fetch();
+
+        if ($password === $db_password) {
+            $message = "Login successful";
+            echo "<script type='text/javascript'>
+                alert('$message');
+                window.location.href='ViewEntries.php';
+            </script>";
+            
+            // Start the session 
+            session_start();
+            $_SESSION['username'] = $username;
+            exit();
+        } else {
+            $message = "Incorrect password";
+            echo "<script type='text/javascript'>
+                alert('$message');
+                window.location.href='Login.php';
+            </script>"; // Give Alert + refresh
+        }
+    } else {
+        $message = "Email not found";
+            echo "<script type='text/javascript'>
+                alert('$message');
+                window.location.href='Login.php';
+            </script>"; // Give Alert  + refresh
+    }
+
+    $stCheck->close();
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,17 +67,16 @@
 <body>
     <div class="container">
         <img class="img-responsive" src="./img/moodLogo.png" width="65%" height="65%">
-        <div class="form-box Login">
-            <form action="">
+            <form class="form-box Login" action="" method="post">
                 <br>
                 <center><h1>Login</h1></center>
                 <div class="input-box">
                     <i class='bx bx-user'></i>
-                    <input type="text" placeholder="Username" required>
+                    <input type="text" name="username" placeholder="Username" required>
                 </div>
                 <div class="input-box">
                     <i class='bx bx-lock'></i>
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
 
                 <button type="submit" class="btn">Login</button>
@@ -37,14 +85,14 @@
 
                 <p>Don't have an account?<br>
                     <button type="button" class="btn btn-warning"
-                        onclick="smoothRedirect('Login.html')">Register</button>
+                        onclick="smoothRedirect('Login.php')">Register</button>
                 </p>
 
                 <!-- Connect register.html to the register button -->
                 <script>
                     document.querySelector('.btn-warning').addEventListener('click', function () 
                     {
-                        window.location.href = 'register.html';
+                        window.location.href = 'register.php';
                     });
                 </script>
             </form>

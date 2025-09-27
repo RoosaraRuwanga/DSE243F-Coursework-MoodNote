@@ -1,34 +1,27 @@
 <?php
+include ("db/config.php"); // Database connection file
 //continue the session assuming one was started at login
 session_start();
 
-if($conn->connect_error)
-    {
-         die("Connection failed:" .$conn->connect_error);
-    }
-
-
-
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="moodnote_database";
-
-$conn=new mysqli($servername,$username,$password,$dbname);
-
-//get the account id of the logged-in user
-$accountID=$_SESSION['acc_id'];
+//get the account of the logged-in user
+$username=$_SESSION['username'];
 
 //query to extract data from the 2nd table
-$sql="SELECT post_data,post_emotion,post_id,post_title FROM posts WHERE acc_id=$acc_id";
-$result=$conn->query($sql);
+$stPosts= $conn->prepare("SELECT post_content, post_emotion, post_id, post_title FROM posts WHERE username=?");
+$stPosts->bind_param("s", $username);
+$stPosts->execute();
+
+function getPostInformation($postID) {
+  echo $postID;
+}
 
 ?>
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Your all entries</title>
+    <title>Your posts</title>
 
     <!-- External CSS -->
     <link rel="stylesheet" href="Style.css">
@@ -59,41 +52,44 @@ $result=$conn->query($sql);
             transform:scale(0.95);
         }
     </style>
-    </head>
+</head>
 <body>
     <div class="container">
         <h1>All entries</h1>
         <br>
-        <h2 style="text-align: left;font-size: 25px;">Choose an entry you want to view</h2>
+        <button id="back" class="btn" onclick="location.href='CreatePost.php'">Create New Post</button>
+        <button id="back" class="btn" onclick="location.href='Statistics.php'">View Statistics</button>
+        <br>
         <br>
         <div class="icon-container">
             <?php
-            if($result=num_rows>0)
-            {
-                while($row=$result->fetch_assoc())
-                {
-                    $entryid=$row['post_id'];
-                    $entryhead= htmlspecialchars($row['entryhead']);
-                    echo" 
-                    <form action='viewmodifyentry.php' method='get'>
-                    <button class='iconbtn' type='submit'>
-                    <img src='img/Noteicons.jpg' alt='$entryhead'>
-                    <span>$entryhead</span>
-                    </button>
-                    </form>";
+            $result = $stPosts->get_result();
+            if($result->num_rows > 0){
+                while ($row = mysqli_fetch_assoc($result))
+                    {
+                        $entryid=$row['post_id'];
+                        $entryhead= htmlspecialchars($row['post_title']);
+                        echo" 
+                        <div class='container' style='background: linear-gradient( #ffe8e5ff, #ffe6e3ff);'>
+                            <h3 name='postTitle'>".$row['post_title']."</h3>
+                            <p name='postContent'>".$row['post_content']."</p>
+                            <p name='postEmotion'>Emotion : ".$row['post_emotion']."</p>
+                            <button style='background: linear-gradient(#ff2200ff, #700d00ff);' class='btn'>Delete Post</button>
+                        </div>";
+                    }
                 }
-              
-            }
-            else
-            {
-                echo"<p>no entries found<p>";
-            }
-            ?>
+                else
+                    {
+                        echo"<p>No entries found.<p>";
+                    }
+                ?>
       
     </div>
+
+    <script type="text/javascript">
+        function getPost(){
+            var php = <?php getPostInformation('1')?>
+        }
+    </script>
 </body>
 </html>
-
-<?php
-$conn->close();
-?>
