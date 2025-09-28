@@ -10,6 +10,16 @@ $username=$_SESSION['username'];
 $stPosts= $conn->prepare("SELECT post_content, post_emotion, post_id, post_title FROM posts WHERE username=?");
 $stPosts->bind_param("s", $username);
 $stPosts->execute();
+
+// Post deletion
+if(isset($_POST['deletePost'])){
+    $entryid = $_POST['entryid'];
+    $stDelete = $conn->prepare("DELETE from posts where post_id=?");
+    @mysqli_next_result($stDelete->conn_id); // Fix 'command out of sync' error
+    $stDelete->bind_param("s", $entryid);
+    $stDelete->execute();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -65,13 +75,15 @@ $stPosts->execute();
                         $entryid=$row['post_id'];
                         $entryhead= htmlspecialchars($row['post_title']);
                         echo" 
-                        <div class='container' style='background: linear-gradient( #ffe8e5ff, #ffe6e3ff);'>
-                            <h3 name='postTitle'>".$row['post_title']."</h3>
-                            <p name='postContent'>".$row['post_content']."</p>
-                            <p name='postEmotion'>Emotion : ".$row['post_emotion']."</p>
-                            <button style='background: linear-gradient(#ff2200ff, #700d00ff);' class='btn'>Delete Post</button>
+                        <div class='container' style='background: linear-gradient( #ffffffff, #ffe6e3ff);'>
+                        <h3 name='postTitle'>".$row['post_title']."</h3>
+                        <p name='postContent'>".$row['post_content']."</p>
+                        <p name='postEmotion'>Emotion : ".$row['post_emotion']."</p>
                         </div>";
+                        // NOTE: Hidden input needed to get the post queued for deletion.
                     }
+                    $result->close();
+                    $stPosts->close();
                 }
                 else
                     {

@@ -25,8 +25,7 @@ $username=$_SESSION['username'];
             echo "<script type='text/javascript'>alert('$message');</script>";
             header("Refresh:0"); // Refresh page.
         }
-        $stInsert.close();
-        $conn.close();
+        $stInsert->close();
     }
 
 
