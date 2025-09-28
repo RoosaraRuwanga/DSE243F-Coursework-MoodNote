@@ -5,15 +5,30 @@ session_start();
 
 //get the account of the logged-in user
 $username=$_SESSION['username'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $postTitle = $_POST['postTitle'];
+        $postContent = $_POST['postContent'];
+        $postEmotion = $_POST['postEmotion'];
 
-//query to extract data from the 2nd table
-$stPosts= $conn->prepare("SELECT post_content, post_emotion, post_id, post_title FROM posts WHERE username=?");
-$stPosts->bind_param("s", $username);
-$stPosts->execute();
+        $stInsert = $conn->prepare("INSERT INTO posts (username, post_title, post_content, post_emotion) VALUES (?, ?, ?, ?)");
+        $stInsert->bind_param("ssss", $username, $postTitle, $postContent, $postEmotion);
 
-function getPostInformation($postID) {
-  echo $postID;
-}
+        if ($stInsert->execute()) {
+            $message = "Post created successfully";
+            echo "<script type='text/javascript'>
+                alert('$message');
+                window.location.href='ViewEntries.php';
+            </script>";
+        }
+        else {
+            $message = "Error: " . $stInsert->error;
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            header("Refresh:0"); // Refresh page.
+        }
+        $stInsert.close();
+        $conn.close();
+    }
+
 
 ?>
 <!DOCTYPE html>

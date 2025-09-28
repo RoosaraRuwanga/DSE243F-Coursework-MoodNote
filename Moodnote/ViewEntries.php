@@ -10,11 +10,6 @@ $username=$_SESSION['username'];
 $stPosts= $conn->prepare("SELECT post_content, post_emotion, post_id, post_title FROM posts WHERE username=?");
 $stPosts->bind_param("s", $username);
 $stPosts->execute();
-
-function getPostInformation($postID) {
-  echo $postID;
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -86,10 +81,5 @@ function getPostInformation($postID) {
       
     </div>
 
-    <script type="text/javascript">
-        function getPost(){
-            var php = <?php getPostInformation('1')?>
-        }
-    </script>
 </body>
 </html>
