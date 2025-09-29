@@ -1,0 +1,361 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-image: url("bgDots.png");
+    background-repeat: repeat;
+}
+
+.container {
+    width: 40px;
+    margin: 1%;
+    margin-left: 15%;
+    padding: 1%;
+    background: linear-gradient(#fff, #fff1db);
+    border-radius: 10px;
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.container .input-box {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 1%;
+}
+
+.input-box input {
+    width: 60%;
+    height: 80%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    padding: 12px 15px;
+    transition: 0.3s ease;
+}
+
+.input-box input::placeholder {
+    color: #aaa;
+}
+
+.input-box input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 9px rgba(0, 123, 255, 0.4);
+    outline: none;
+}
+
+
+.container .btn { /* Thanks Stackoverflow, my saviour to making this project look much less boring - Roosara*/
+    text-shadow: 2px 0 #00000023, -2px 0 #00000023, 0 2px #00000023, 0 -2px #00000023,
+            1px 1px #00000023, -1px -1px #00000023, 1px -1px #00000023, -1px 1px #00000023;
+    width: 24%;
+    height: 80%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: linear-gradient(#ff5100, #ff9900);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, .4) 0 3px 0 0 inset;
+    box-sizing: border-box;
+}
+
+.container .btn:hover {
+    opacity: 0.6;
+    text-shadow: 2px 0 #ffffff, -2px 0 #ffffff, 0 2px #ffffff, 0 -2px #ffffff,
+            1px 1px #ffffff, -1px -1px #ffffff, 1px -1px #ffffff, -1px 1px #ffffff;
+}
+
+
+.register-btn {
+    width: 50%;
+    height: 80%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: #ffb800;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background: #e6a800;
+}
+
+
+.register-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0 10px;
+    color: #555;
+}
+
+
+.btn-warning {
+    margin-top: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    background: #ffb300;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-warning:hover {
+    background: #e6a000;
+    transform: translateY(-2px);
+}
+
+
+body.fade-in {
+    opacity: 1;
+}
+
+
+
+
+
+
+/*THEVAN'S CSS- !!DON'T TOUCH HE'S SENSITIVE!!*/
+
+.my-container{
+    position: relative;
+    width: 60%;
+    margin: 2% auto;
+    padding: 2%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    z-index: 2;
+}
+
+.floating-text-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.my-container .content {
+    position: relative;
+    z-index: 2;
+}
+
+.my-container .not-centered {
+text-align: left;
+}
+
+
+.wrapper {
+  text-align: center; /* All text by default is centered */
+}
+
+.not-centered {
+  text-align: left; /* Overrides just this element */
+}
+
+.soft-font {
+font-family: 'Nunito', sans-serif; /*The Font*/
+}
+
+.zoom-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.zoom-item {
+    position: absolute;
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 300;
+    white-space: nowrap;
+    transform-origin: center center;
+    opacity: 0.05;
+    color: rgba(0,0,0,0.4);
+}
+
+.zoom-item[data-layer="3"] {z-index: 1; opacity: 0.15;}
+.zoom-item[data-layer="2"] {z-index: 1; opacity: 0.10;}
+.zoom-item[data-layer="1"] {z-index: 1; opacity: 0.05;}
+
+
+.zoom-item:nth-child(1) { left: 5%; top: 10%; }   
+.zoom-item:nth-child(2) { left: -1%; top: 80%; }   
+.zoom-item:nth-child(3) { left: 90%; top: 50%; }   
+.zoom-item:nth-child(4) { left: 1%; top: 190%; }  
+.zoom-item:nth-child(5) { left: 65%; top: 125%; }   
+.zoom-item:nth-child(6) { left: 75%; top: 100%; }   
+.zoom-item:nth-child(7) { left: 3%; top: 120%; }   
+.zoom-item:nth-child(8) { left: 86%; top: 175%; }  
+.zoom-item:nth-child(9) { left: 80%; top: 250%; }  
+.zoom-item:nth-child(10) { left: 2%; top: 285%; }  
+.zoom-item:nth-child(11) { left: 34%; top: 330%; }  
+
+/*Animations For the Text*/
+.animatable {
+  /* initially hide animatable objects */
+  visibility: hidden;
+
+  /* initially pause animatable objects their animations */
+  animation-play-state: paused;
+}
+
+/* show objects being animated */
+.animated {
+  visibility: visible;
+
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-play-state: running;
+}
+
+/* CSS Animations make me wanna jump the ledge :3 UwU  */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(1.1); }
+  100% { opacity: inherit; transform: scale(1); } 
+}
+
+.animated.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+.myimg { 
+  width: 250px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-repeat: no-repeat, repeat;
+  background-image: url("MarkerHeart.jpeg"), url("Beige.jpg");
+  background-blend-mode: darken;
+}
+
+/*MORE ANIMATIONS!!*/
+@keyframes fadeInDown { /*Fade In Down*/
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animated.fadeInDown {
+  animation-name: fadeInDown;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+
+@keyframes fadeInUp { /*Fade In Up*/
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animated.fadeInUp {
+  animation-name: fadeInUp;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes bounceInLeft { /*Bounce From The Left*/
+  0% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+  60% {
+    transform: translateX(20px);
+  }
+  80% {
+    transform: translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animated.bounceInLeft {
+  animation-name: bounceInLeft;
+}
+
+@keyframes bounceInRight { /*Bounce From The Right*/
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  60% {
+    transform: translateX(-20px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animated.bounceInRight {
+  animation-name: bounceInRight;
+}
+
+@keyframes moveUp { /*Moves up...*/
+  0% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.animated.moveUp {
+  animation-name: moveUp;
+}
+
+@keyframes bounceIn { /*Bounces In*/
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animated.bounceIn {
+  animation-name: bounceIn;
+}
